@@ -8,8 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		7148CF41227311B60043D0BF /* ChartLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148CF40227311B60043D0BF /* ChartLineTableViewCell.swift */; };
-		7148CF49227496640043D0BF /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148CF48227496640043D0BF /* TableViewController.swift */; };
-		7148CF4B22749B7B0043D0BF /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148CF4A22749B7B0043D0BF /* DataProvider.swift */; };
+		7148CF4F2275C34D0043D0BF /* CountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148CF4E2275C34D0043D0BF /* CountTableViewCell.swift */; };
+		7148CF512275C3700043D0BF /* AbscissaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148CF502275C3700043D0BF /* AbscissaTableViewCell.swift */; };
+		7148CF532275C3830043D0BF /* OrdinateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148CF522275C3830043D0BF /* OrdinateTableViewCell.swift */; };
+		7148CF552275C59D0043D0BF /* GeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148CF542275C59D0043D0BF /* GeneratorViewController.swift */; };
+		7148CF572275C7430043D0BF /* PlotSceme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148CF562275C7430043D0BF /* PlotSceme.swift */; };
+		7148CF59227634370043D0BF /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148CF58227634370043D0BF /* Observable.swift */; };
+		7148CF5B22763A4D0043D0BF /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148CF5A22763A4D0043D0BF /* Bindable.swift */; };
+		7148CF5D227641F70043D0BF /* UIControl+Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148CF5C227641F70043D0BF /* UIControl+Bindable.swift */; };
+		7148CF652277A9B50043D0BF /* GeneratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148CF642277A9B50043D0BF /* GeneratorViewModel.swift */; };
 		717C3F602253DAD200F3EBBB /* LenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717C3F5F2253DAD200F3EBBB /* LenseView.swift */; };
 		717C3F62225403D800F3EBBB /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717C3F61225403D800F3EBBB /* MathHelper.swift */; };
 		717C3F642258D94100F3EBBB /* PlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717C3F632258D94100F3EBBB /* PlotView.swift */; };
@@ -28,8 +35,15 @@
 
 /* Begin PBXFileReference section */
 		7148CF40227311B60043D0BF /* ChartLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartLineTableViewCell.swift; sourceTree = "<group>"; };
-		7148CF48227496640043D0BF /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		7148CF4A22749B7B0043D0BF /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		7148CF4E2275C34D0043D0BF /* CountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountTableViewCell.swift; sourceTree = "<group>"; };
+		7148CF502275C3700043D0BF /* AbscissaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbscissaTableViewCell.swift; sourceTree = "<group>"; };
+		7148CF522275C3830043D0BF /* OrdinateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdinateTableViewCell.swift; sourceTree = "<group>"; };
+		7148CF542275C59D0043D0BF /* GeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorViewController.swift; sourceTree = "<group>"; };
+		7148CF562275C7430043D0BF /* PlotSceme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotSceme.swift; sourceTree = "<group>"; };
+		7148CF58227634370043D0BF /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		7148CF5A22763A4D0043D0BF /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
+		7148CF5C227641F70043D0BF /* UIControl+Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Bindable.swift"; sourceTree = "<group>"; };
+		7148CF642277A9B50043D0BF /* GeneratorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorViewModel.swift; sourceTree = "<group>"; };
 		717C3F5F2253DAD200F3EBBB /* LenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LenseView.swift; sourceTree = "<group>"; };
 		717C3F61225403D800F3EBBB /* MathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		717C3F632258D94100F3EBBB /* PlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotView.swift; sourceTree = "<group>"; };
@@ -78,10 +92,8 @@
 		7148CF432273131A0043D0BF /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				7148CF48227496640043D0BF /* TableViewController.swift */,
-				71ABCBF32267DAC7005052DF /* ChartViewController.swift */,
-				7148CF45227313350043D0BF /* Model */,
-				7148CF442273132D0043D0BF /* Cell */,
+				7148CF632277A9900043D0BF /* Chart */,
+				7148CF4C2275C30B0043D0BF /* Input generator */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -94,10 +106,58 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		7148CF45227313350043D0BF /* Model */ = {
+		7148CF45227313350043D0BF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7148CF4A22749B7B0043D0BF /* DataProvider.swift */,
+				7148CF642277A9B50043D0BF /* GeneratorViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7148CF4C2275C30B0043D0BF /* Input generator */ = {
+			isa = PBXGroup;
+			children = (
+				7148CF662277AC9F0043D0BF /* Model */,
+				7148CF4D2275C3230043D0BF /* Cells */,
+				7148CF45227313350043D0BF /* ViewModel */,
+				7148CF542275C59D0043D0BF /* GeneratorViewController.swift */,
+			);
+			path = "Input generator";
+			sourceTree = "<group>";
+		};
+		7148CF4D2275C3230043D0BF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7148CF4E2275C34D0043D0BF /* CountTableViewCell.swift */,
+				7148CF502275C3700043D0BF /* AbscissaTableViewCell.swift */,
+				7148CF522275C3830043D0BF /* OrdinateTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		7148CF5E22776FB90043D0BF /* Bindable */ = {
+			isa = PBXGroup;
+			children = (
+				7148CF58227634370043D0BF /* Observable.swift */,
+				7148CF5A22763A4D0043D0BF /* Bindable.swift */,
+				7148CF5C227641F70043D0BF /* UIControl+Bindable.swift */,
+			);
+			path = Bindable;
+			sourceTree = "<group>";
+		};
+		7148CF632277A9900043D0BF /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				7148CF442273132D0043D0BF /* Cell */,
+				71ABCBF32267DAC7005052DF /* ChartViewController.swift */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		7148CF662277AC9F0043D0BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7148CF562275C7430043D0BF /* PlotSceme.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,6 +181,7 @@
 		71DC8CA622537DC1008AA5FB /* Chart */ = {
 			isa = PBXGroup;
 			children = (
+				7148CF5E22776FB90043D0BF /* Bindable */,
 				7148CF432273131A0043D0BF /* Example */,
 				7148CF42227312B40043D0BF /* Sources */,
 				71DC8CA722537DC1008AA5FB /* AppDelegate.swift */,
@@ -204,18 +265,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7148CF532275C3830043D0BF /* OrdinateTableViewCell.swift in Sources */,
 				71AC8D212260FBFD0057ABF2 /* CoordinatesValueView.swift in Sources */,
 				71ABCBF62267DD84005052DF /* UIView+Autolayout.swift in Sources */,
+				7148CF512275C3700043D0BF /* AbscissaTableViewCell.swift in Sources */,
+				7148CF5D227641F70043D0BF /* UIControl+Bindable.swift in Sources */,
 				717C3F602253DAD200F3EBBB /* LenseView.swift in Sources */,
 				7148CF41227311B60043D0BF /* ChartLineTableViewCell.swift in Sources */,
+				7148CF59227634370043D0BF /* Observable.swift in Sources */,
 				717C3F642258D94100F3EBBB /* PlotView.swift in Sources */,
+				7148CF5B22763A4D0043D0BF /* Bindable.swift in Sources */,
+				7148CF652277A9B50043D0BF /* GeneratorViewModel.swift in Sources */,
 				71ABCBF42267DAC7005052DF /* ChartViewController.swift in Sources */,
+				7148CF4F2275C34D0043D0BF /* CountTableViewCell.swift in Sources */,
 				71DC8CBC22537E1E008AA5FB /* SliderView.swift in Sources */,
+				7148CF572275C7430043D0BF /* PlotSceme.swift in Sources */,
+				7148CF552275C59D0043D0BF /* GeneratorViewController.swift in Sources */,
 				717C3F62225403D800F3EBBB /* MathHelper.swift in Sources */,
 				71AC8D1F225E26A80057ABF2 /* ChartLegend.swift in Sources */,
-				7148CF49227496640043D0BF /* TableViewController.swift in Sources */,
 				71ABCBF22267D5E3005052DF /* Chart.swift in Sources */,
-				7148CF4B22749B7B0043D0BF /* DataProvider.swift in Sources */,
 				71DC8CA822537DC1008AA5FB /* AppDelegate.swift in Sources */,
 				71DC8CBA22537DDD008AA5FB /* ChartDataSource.swift in Sources */,
 			);
