@@ -104,8 +104,8 @@ extension GeneratorViewController: UITableViewDataSource {
                 cell.lblMin.text = "Min"
                 cell.lblMax.text = "Max"
                 cell.txtTitle.text = ordinate.name.value
-                cell.txtMin.text = "\(ordinate.min.value)"
-                cell.txtMax.text = "\(ordinate.max.value)"
+                cell.txtMin.text = "\(String(describing: ordinate.min.value))"
+                cell.txtMax.text = "\(String(describing: ordinate.max.value))"
                 
                 cell.colorView.layer.cornerRadius = 2
                 cell.colorView.backgroundColor = ordinate.color.value

@@ -28,9 +28,9 @@ struct PlotScheme {
     
     var count: Int = 100
     
-    var minX: Int = 0
+    var minX: Int = 1000000000000
     
-    var stepX: Int = 5
+    var stepX: Int = 100000
     
     var ordinates: [Ordinate] = [Ordinate(name: "Line 1", min: 0, max: 100, color: .red),
     Ordinate(name: "Line 2", min: 22, max: 100, color: .green)]
