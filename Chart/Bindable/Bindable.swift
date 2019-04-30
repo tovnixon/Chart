@@ -14,7 +14,6 @@ fileprivate struct AssociatedKeys {
     static var box: UInt8 = 1
 }
 
-
 internal class Target {
     var onValueChanged: (() -> ())?
     
@@ -40,6 +39,7 @@ extension Bindable where Self: NSObjectProtocol {
 }
 
 extension Bindable where Self: UIControl {
+    
     private var target: Target? {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.box) as? Target
@@ -52,7 +52,6 @@ extension Bindable where Self: UIControl {
     func bind(_ observable: Observable<BoundType>) {
         self.observable = observable
         let target = Target()
-        // retain the box
         self.target = target
         target.onValueChanged = {
             self.observable?.value = self.boundValue

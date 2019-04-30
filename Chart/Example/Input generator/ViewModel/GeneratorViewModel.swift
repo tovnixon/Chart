@@ -10,9 +10,13 @@ import Foundation
 import UIKit.UIColor
 
 class ObservableOrdinate {
+    
     var name = Observable<String?>("name")
+    
     var min = Observable<String?>("0")
+    
     var max = Observable<String?>("1")
+    
     var color = Observable<UIColor?>(.red)
     
     init(ordinate: PlotScheme.Ordinate) {
@@ -36,9 +40,11 @@ class GeneratorViewModel {
     private var scheme: PlotScheme = PlotScheme()
     
     public private(set) var count: Observable<String?>
+    
     public private(set) var minX: Observable<String?>
+    
     public private(set) var stepX: Observable<String?>
-        
+    
     public private(set) var ordinates = [Observable<ObservableOrdinate?>]()
     
     init(model: PlotScheme) {
@@ -75,7 +81,6 @@ class GeneratorViewModel {
             let v = Int(value ?? "0") ?? 0
             if v <= self.scheme.ordinates[index].min {
                 // throw validation error to vc?
-                //self.ordinates[index].value?.max.value = "\(self.scheme.ordinates[index].max)"
             } else {
                 self.scheme.ordinates[index].max = v
             }

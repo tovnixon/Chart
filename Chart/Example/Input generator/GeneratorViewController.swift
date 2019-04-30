@@ -8,8 +8,16 @@
 
 import UIKit
 
-class GeneratorViewController: UIViewController {
+private enum Sections: Int {
+    case count = 0
+    case abscissa = 1
+    case ordinates = 2
+    
+    static var totalValues = 3
+}
 
+class GeneratorViewController: UIViewController {
+    
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: GeneratorViewModel! {
@@ -21,6 +29,7 @@ class GeneratorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowsSelection = false
+        
     }
     
     func bindViewModel() {
@@ -30,7 +39,7 @@ class GeneratorViewController: UIViewController {
     }
     
     @IBAction func viewChart() {
-        
+        // segue
     }
     
     @IBAction func addOrdinate() {
@@ -51,74 +60,60 @@ class GeneratorViewController: UIViewController {
 }
 
 extension GeneratorViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         switch section {
-            case 0, 1: return 1
-            default: return viewModel.ordinates.count
+        case Sections.count.rawValue,
+             Sections.abscissa.rawValue:
+            return 1
+        default:
+            return viewModel.ordinates.count
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return Sections.totalValues
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
         switch section {
-            case 1: return "X"
-            case 2: return "Y"
-            default: return nil
+        case Sections.abscissa.rawValue: return "X"
+        case Sections.ordinates.rawValue: return "Y"
+        default: return nil
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 2 {
+        
+        if indexPath.section == Sections.ordinates.rawValue {
             return 88
         }
         return 44
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let row = indexPath.row
         let section = indexPath.section
         switch (row, section) {
-            case (_, 0):
-                let cell = tableView.dequeueReusableCell(withIdentifier: CountTableViewCell.reuseIdentifier, for: indexPath) as! CountTableViewCell
-                cell.lblCount.text = "Count"
-                cell.txtCount.text = viewModel.count.value
-                cell.txtCount.bind(viewModel.count)
-                return cell
-            case (_, 1):
-                let cell = tableView.dequeueReusableCell(withIdentifier: AbscissaTableViewCell.reuseIdentifier, for: indexPath) as! AbscissaTableViewCell
-                cell.lblMin.text = "Min"
-                cell.lblStep.text = "Step"
-                cell.txtMin.text = viewModel.minX.value
-                cell.txtStep.text = viewModel.stepX.value
-                
-                cell.txtMin.bind(viewModel.minX)
-                cell.txtStep.bind(viewModel.stepX)
+        case (_, Sections.count.rawValue):
+            let cell = tableView.dequeueReusableCell(withIdentifier: CountTableViewCell.reuseIdentifier, for: indexPath) as! CountTableViewCell
+            cell.bind(viewModel)
             return cell
-            default:
-                let cell = tableView.dequeueReusableCell(withIdentifier: OrdinateTableViewCell.reuseIdentifier, for: indexPath) as! OrdinateTableViewCell
-                let ordinate = viewModel.ordinates[row].value!
-                
-                cell.lblMin.text = "Min"
-                cell.lblMax.text = "Max"
-                cell.txtTitle.text = ordinate.name.value
-                cell.txtMin.text = "\(String(describing: ordinate.min.value))"
-                cell.txtMax.text = "\(String(describing: ordinate.max.value))"
-                
+        case (_, Sections.abscissa.rawValue):
+            let cell = tableView.dequeueReusableCell(withIdentifier: AbscissaTableViewCell.reuseIdentifier, for: indexPath) as! AbscissaTableViewCell
+            cell.bind(viewModel)
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: OrdinateTableViewCell.reuseIdentifier, for: indexPath) as! OrdinateTableViewCell
+            if let ordinate = viewModel.ordinates[row].value {
+                cell.bind(ordinate)
                 cell.colorView.layer.cornerRadius = 2
                 cell.colorView.backgroundColor = ordinate.color.value
-                
-                cell.txtMax.bind(ordinate.max)
-                cell.txtMin.bind(ordinate.min)
-                cell.txtTitle.bind(ordinate.name)
-            
-                return cell
+            }
+            return cell
         }
     }
-}
-
-extension GeneratorViewController: UITableViewDelegate {
-    
 }

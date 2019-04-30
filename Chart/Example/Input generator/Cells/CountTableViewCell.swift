@@ -12,21 +12,16 @@ class CountTableViewCell: UITableViewCell, UITextFieldDelegate {
     static let reuseIdentifier = "CountTableViewCell"
     
     @IBOutlet weak var txtCount: UITextField!
+    
     @IBOutlet weak var lblCount: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        lblCount.text = "Count"
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
- 
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        print("sd")
+    
+    func bind(_ viewModel: GeneratorViewModel) {
+        txtCount.bind(viewModel.count)
     }
 }
 

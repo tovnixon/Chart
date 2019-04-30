@@ -10,14 +10,21 @@ import Foundation
 import UIKit.UIColor
 
 struct PlotScheme {
+    
     static var colors: [UIColor] = [.red, .green, .blue, .orange, .purple, .brown, .yellow, .magenta, .cyan]
+    
     struct Ordinate {
+        
         var name: String = "Line 1"
+        
         var min: Int = 0
+        
         var max: Int = 100
+        
         var color: UIColor = colors[0]
         
         func generateRandom(for count: Int) -> [Int] {
+            
             var r = [Int]()
             for _ in 0...count {
                 r.append(Int.random(in: min..<max))
@@ -33,24 +40,27 @@ struct PlotScheme {
     var stepX: Int = 100000
     
     var ordinates: [Ordinate] = [Ordinate(name: "Line 1", min: 0, max: 100, color: .red),
-    Ordinate(name: "Line 2", min: 22, max: 100, color: .green)]
+                                 Ordinate(name: "Line 2", min: 22, max: 100, color: .green)]
     
     mutating func addOrdinate() -> Ordinate? {
+        
         guard ordinates.count < PlotScheme.colors.count else {
             return nil
         }
         var ordinate = Ordinate()
-        ordinate.name = "Line \(ordinates.count)"
+        ordinate.name = "Line \(ordinates.count + 1)"
         ordinate.color = PlotScheme.colors[ordinates.count]
         ordinates.append(ordinate)
         return ordinate
     }
     
     func generateData() -> ChartDataSource {
+        
         var x = [Int]()
         for i in 0...count {
             x.append(minX + i * stepX)
         }
+        
         var lines = [Line]()
         var id = 0
         for o in ordinates {

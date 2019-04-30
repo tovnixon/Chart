@@ -9,9 +9,11 @@
 import UIKit
 
 class ChartLineTableViewCell: UITableViewCell {
+    
     static let reuseIdentifier = "ChartLineTableViewCell"
     
     @IBOutlet weak var title: UILabel!
+    
     @IBOutlet weak var colorBox: UIView!
     
     override func awakeFromNib() {

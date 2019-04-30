@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension UITextField: Bindable {
+    
     var boundValue: String? {
         get {
             return self.text

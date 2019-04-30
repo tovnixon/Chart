@@ -9,26 +9,25 @@
 import UIKit
 
 class AbscissaTableViewCell: UITableViewCell {
-
+    
     static let reuseIdentifier = "AbscissaTableViewCell"
-
+    
     @IBOutlet weak var txtMin: UITextField!
-
+    
     @IBOutlet weak var lblMin: UILabel!
-
+    
     @IBOutlet weak var txtStep: UITextField!
     
     @IBOutlet weak var lblStep: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        lblMin.text = "Min"
+        lblStep.text = "Step"
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func bind(_ viewModel: GeneratorViewModel) {
+        txtMin.bind(viewModel.minX)
+        txtStep.bind(viewModel.stepX)
     }
-
 }

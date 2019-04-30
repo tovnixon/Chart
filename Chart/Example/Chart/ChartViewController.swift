@@ -9,16 +9,24 @@
 import UIKit
 
 class ChartViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var chartContainer: UIView!
+    
     @IBOutlet weak var sliderContainer: UIView!
+    
     var chart: Chart!
+    
     var dataSource: ChartDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.chart = Chart(dataSource: self.dataSource!, chartContainer: &chartContainer, sliderContainer: &sliderContainer)
+        guard let dataSource = self.dataSource else {
+            assertionFailure("Chart data source is not initialized")
+            return
+        }
+        self.chart = Chart(dataSource: dataSource, chartContainer: &chartContainer, sliderContainer: &sliderContainer)
         
         tableView.backgroundView?.backgroundColor = .white
         tableView.backgroundColor = .white
@@ -27,6 +35,7 @@ class ChartViewController: UIViewController {
 }
 
 extension ChartViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chart!.dataSource.lines.count
     }
@@ -40,7 +49,7 @@ extension ChartViewController: UITableViewDelegate, UITableViewDataSource {
         cell.title.text = line.name
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let line = chart!.dataSource.lines[indexPath.row]
         if let cell = tableView.cellForRow(at: indexPath) {

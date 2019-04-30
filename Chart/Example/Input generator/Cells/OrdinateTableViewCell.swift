@@ -23,20 +23,20 @@ class OrdinateTableViewCell: UITableViewCell {
     @IBOutlet weak var txtTitle: UITextField!
     
     @IBOutlet weak var colorView: UIView!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        lblMin.text = "Min"
+        lblMax.text = "Max"
     }
     
     @IBAction func colorSelected() {
         
     }
-
+    
+    func bind(_ ordinate: ObservableOrdinate) {
+        txtMax.bind(ordinate.max)
+        txtMin.bind(ordinate.min)
+        txtTitle.bind(ordinate.name)
+    }
 }
