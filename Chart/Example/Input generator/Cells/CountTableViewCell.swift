@@ -20,13 +20,14 @@ class CountTableViewCell: UITableViewCell, UITextFieldDelegate {
         lblCount.text = "Count"
     }
     
-    func bind(_ viewModel: GeneratorViewModel) {
-        txtCount.bind(viewModel.count)
+    func bind(_ viewModel: GeneratorViewModel, disposeBag: DisposeBag) {
+        
+        txtCount.bind(viewModel.count).disposed(by: disposeBag)
+        
         viewModel.isCountValid.bind { [unowned self] isValid in
             self.txtCount.layer.borderColor = isValid ? nil : UIColor.red.cgColor
             self.txtCount.layer.borderWidth = isValid ? 0 : 0.5
-        }
-        
+        }.disposed(by: disposeBag)
     }
 }
 

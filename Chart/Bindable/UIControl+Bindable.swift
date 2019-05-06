@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 import UIKit
 
 extension UITextField: Bindable {
@@ -17,6 +18,42 @@ extension UITextField: Bindable {
         }
         set {
             self.text = newValue
+        }
+    }
+}
+
+extension UISwitch: Bindable {
+    
+    var boundValue: Bool {
+        get {
+            return self.isOn
+        }
+        set {
+            self.isOn = newValue
+        }
+    }
+}
+
+extension UISlider: Bindable {
+    
+    var boundValue: Float {
+        get {
+            return self.value
+        }
+        set {
+            self.value = newValue
+        }
+    }
+}
+
+extension UIStepper: Bindable {
+    
+    var boundValue: Double {
+        get {
+            return self.value
+        }
+        set {
+            self.value = newValue
         }
     }
 }

@@ -22,6 +22,8 @@ class GeneratorViewController: UIViewController {
 
     @IBOutlet weak var btnView: UIBarButtonItem!
     
+    var disposeBag = DisposeBag()
+    
     var viewModel: GeneratorViewModel! {
         didSet {
             bindViewModel()
@@ -29,6 +31,7 @@ class GeneratorViewController: UIViewController {
     }
     
     deinit {
+        disposeBag.dispose()
         print("Deinit VC")
     }
     
@@ -37,7 +40,7 @@ class GeneratorViewController: UIViewController {
         tableView.allowsSelection = false
         viewModel.isValid.bind { [unowned self] isValid in
             self.btnView.isEnabled = isValid
-        }
+        }.disposed(by: disposeBag)
     }
     
     func bindViewModel() {
@@ -108,16 +111,16 @@ extension GeneratorViewController: UITableViewDataSource {
         switch (row, section) {
         case (_, Sections.count.rawValue):
             let cell = tableView.dequeueReusableCell(withIdentifier: CountTableViewCell.reuseIdentifier, for: indexPath) as! CountTableViewCell
-            cell.bind(viewModel)
+            cell.bind(viewModel, disposeBag: disposeBag)
             return cell
         case (_, Sections.abscissa.rawValue):
             let cell = tableView.dequeueReusableCell(withIdentifier: AbscissaTableViewCell.reuseIdentifier, for: indexPath) as! AbscissaTableViewCell
-            cell.bind(viewModel)
+            cell.bind(viewModel, disposeBag: disposeBag)
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: OrdinateTableViewCell.reuseIdentifier, for: indexPath) as! OrdinateTableViewCell
             if let ordinate = viewModel.ordinates[row].value {
-                cell.bind(ordinate)
+                cell.bind(ordinate, disposeBag: disposeBag)
                 cell.colorView.layer.cornerRadius = 2
                 cell.colorView.backgroundColor = ordinate.color.value
             }

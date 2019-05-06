@@ -28,6 +28,10 @@ class ObservableOrdinate {
         self.color = Observable<UIColor?>(ordinate.color)
         self.isValid = Observable<Bool>(ordinate.isValid)
     }
+    
+    deinit {
+        print("ObservableOrdinate deinit")
+    }
 }
 
 extension PlotScheme.Ordinate {
@@ -40,6 +44,7 @@ extension PlotScheme.Ordinate {
 }
 
 class GeneratorViewModel {
+    
     private var scheme: PlotScheme = PlotScheme()
     
     public private(set) var count: Observable<String?>
@@ -56,6 +61,8 @@ class GeneratorViewModel {
     
     public private(set) var isValid: Observable<Bool>
     
+    var disposeBag = DisposeBag()
+    
     init(model: PlotScheme) {
         self.scheme = model
         
@@ -69,25 +76,25 @@ class GeneratorViewModel {
         
         isStepXValid.bind { [unowned self] _ in
             self.isValid.value = self.scheme.isValid
-        }
+        }.disposed(by: disposeBag)
         
         isCountValid.bind { [unowned self] _ in
             self.isValid.value = self.scheme.isValid
-        }
+        }.disposed(by: disposeBag)
         
         count.bind { [unowned self] (value) in
             self.scheme.count = Int(value ?? "0") ?? 0
             self.isCountValid.value = self.scheme.isCountValid
-        }
+        }.disposed(by: disposeBag)
         
         minX.bind { [unowned self] (value) in
             self.scheme.minX = Int(value ?? "0") ?? 0
-        }
+        }.disposed(by: disposeBag)
         
         stepX.bind { [unowned self] (value) in
             self.scheme.stepX = Int(value ?? "0") ?? 0
             self.isStepXValid.value = self.scheme.isStepXValid
-        }
+        }.disposed(by: disposeBag)
         
         var i = 0
         for ordinate in model.ordinates {
@@ -100,6 +107,7 @@ class GeneratorViewModel {
     }
     
     deinit {
+        disposeBag.dispose()
         print("Deinit ViewModel")
     }
     
@@ -107,23 +115,23 @@ class GeneratorViewModel {
         observableOrdinate.max.bind { [unowned self] (value) in
             self.scheme.ordinates[index].max = Int(value ?? "0") ?? 0
             self.ordinates[index].value?.isValid.value = self.scheme.ordinates[index].isValid
-        }
+        }.disposed(by: disposeBag)
         observableOrdinate.min.bind { [unowned self] (value) in
             self.scheme.ordinates[index].min = Int(value ?? "0") ?? 0
             self.ordinates[index].value?.isValid.value = self.scheme.ordinates[index].isValid
-        }
+        }.disposed(by: disposeBag)
         
         observableOrdinate.name.bind { [unowned self] (value) in
             self.scheme.ordinates[index].name = value ?? "Line"
-        }
+        }.disposed(by: disposeBag)
         
         observableOrdinate.color.bind { [unowned self] (value) in
             self.scheme.ordinates[index].color = value ?? .red
-        }
+        }.disposed(by: disposeBag)
         
         self.ordinates[index].value?.isValid.bind({ [unowned self] _ in
             self.isValid.value = self.scheme.isValid
-        })
+        }).disposed(by: disposeBag)
     }
     
     private func addObservableOrdinate(_ ordinate: PlotScheme.Ordinate) {

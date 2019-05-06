@@ -10,6 +10,32 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Start View Controller-->
+        <scene sceneID="CZ0-xq-soH">
+            <objects>
+                <viewController storyboardIdentifier="StartViewController" id="RRU-M4-G46" customClass="StartViewController" customModule="Chart" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y3P-wi-fcI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJy-rL-zEe">
+                                <rect key="frame" x="164" y="311" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="XLm-1j-D6B" kind="show" id="las-BS-X3X"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="hxs-ow-wUi"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bON-tu-kHg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ef0-wv-VSG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-76" y="-1416"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="OnF-lT-cgA">
             <objects>
@@ -19,7 +45,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="XLm-1j-D6B" kind="relationship" relationship="rootViewController" id="UjJ-rD-G3P"/>
+                        <segue destination="RRU-M4-G46" kind="relationship" relationship="rootViewController" id="1dp-va-RAu"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A7g-qh-e73" userLabel="First Responder" sceneMemberID="firstResponder"/>

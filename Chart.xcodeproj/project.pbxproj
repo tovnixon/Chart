@@ -25,6 +25,8 @@
 		71ABCBF62267DD84005052DF /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ABCBF52267DD84005052DF /* UIView+Autolayout.swift */; };
 		71AC8D1F225E26A80057ABF2 /* ChartLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AC8D1E225E26A80057ABF2 /* ChartLegend.swift */; };
 		71AC8D212260FBFD0057ABF2 /* CoordinatesValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AC8D202260FBFD0057ABF2 /* CoordinatesValueView.swift */; };
+		71B662A022805D2700E32172 /* DisposeBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6629F22805D2600E32172 /* DisposeBag.swift */; };
+		71B662A222806B5D00E32172 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B662A122806B5D00E32172 /* StartViewController.swift */; };
 		71DC8CA822537DC1008AA5FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DC8CA722537DC1008AA5FB /* AppDelegate.swift */; };
 		71DC8CAD22537DC2008AA5FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71DC8CAB22537DC2008AA5FB /* Main.storyboard */; };
 		71DC8CAF22537DC6008AA5FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71DC8CAE22537DC6008AA5FB /* Assets.xcassets */; };
@@ -52,6 +54,8 @@
 		71ABCBF52267DD84005052DF /* UIView+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 		71AC8D1E225E26A80057ABF2 /* ChartLegend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartLegend.swift; sourceTree = "<group>"; };
 		71AC8D202260FBFD0057ABF2 /* CoordinatesValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatesValueView.swift; sourceTree = "<group>"; };
+		71B6629F22805D2600E32172 /* DisposeBag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisposeBag.swift; sourceTree = "<group>"; };
+		71B662A122806B5D00E32172 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		71DC8CA422537DC1008AA5FB /* Chart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DC8CA722537DC1008AA5FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71DC8CAC22537DC2008AA5FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 			children = (
 				7148CF632277A9900043D0BF /* Chart */,
 				7148CF4C2275C30B0043D0BF /* Input generator */,
+				71B662A122806B5D00E32172 /* StartViewController.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 		7148CF5E22776FB90043D0BF /* Bindable */ = {
 			isa = PBXGroup;
 			children = (
+				71B6629F22805D2600E32172 /* DisposeBag.swift */,
 				7148CF58227634370043D0BF /* Observable.swift */,
 				7148CF5A22763A4D0043D0BF /* Bindable.swift */,
 				7148CF5C227641F70043D0BF /* UIControl+Bindable.swift */,
@@ -267,6 +273,7 @@
 			files = (
 				7148CF532275C3830043D0BF /* OrdinateTableViewCell.swift in Sources */,
 				71AC8D212260FBFD0057ABF2 /* CoordinatesValueView.swift in Sources */,
+				71B662A222806B5D00E32172 /* StartViewController.swift in Sources */,
 				71ABCBF62267DD84005052DF /* UIView+Autolayout.swift in Sources */,
 				7148CF512275C3700043D0BF /* AbscissaTableViewCell.swift in Sources */,
 				7148CF5D227641F70043D0BF /* UIControl+Bindable.swift in Sources */,
@@ -281,6 +288,7 @@
 				71DC8CBC22537E1E008AA5FB /* SliderView.swift in Sources */,
 				7148CF572275C7430043D0BF /* PlotSceme.swift in Sources */,
 				7148CF552275C59D0043D0BF /* GeneratorViewController.swift in Sources */,
+				71B662A022805D2700E32172 /* DisposeBag.swift in Sources */,
 				717C3F62225403D800F3EBBB /* MathHelper.swift in Sources */,
 				71AC8D1F225E26A80057ABF2 /* ChartLegend.swift in Sources */,
 				71ABCBF22267D5E3005052DF /* Chart.swift in Sources */,

@@ -34,17 +34,17 @@ class OrdinateTableViewCell: UITableViewCell {
         
     }
     
-    func bind(_ ordinate: ObservableOrdinate) {
-        txtMax.bind(ordinate.max)
-        txtMin.bind(ordinate.min)
-        txtTitle.bind(ordinate.name)
+    func bind(_ ordinate: ObservableOrdinate, disposeBag: DisposeBag) {
+        txtMax.bind(ordinate.max).disposed(by: disposeBag)
+        txtMin.bind(ordinate.min).disposed(by: disposeBag)
+        txtTitle.bind(ordinate.name).disposed(by: disposeBag)
         
         ordinate.isValid.bind { [unowned self] isValid in
             self.txtMin.layer.borderColor = isValid ? nil : UIColor.red.cgColor
             self.txtMin.layer.borderWidth = isValid ? 0 : 0.5
             self.txtMax.layer.borderColor = isValid ? nil : UIColor.red.cgColor
             self.txtMax.layer.borderWidth = isValid ? 0 : 0.5
-        }
+        }.disposed(by: disposeBag)
 
     }
 }

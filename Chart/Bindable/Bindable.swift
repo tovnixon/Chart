@@ -22,7 +22,7 @@ internal class Target {
     }
 }
 
-protocol Bindable: AnyObject {
+protocol Bindable: AnyObject, Disposable {
     associatedtype BoundType
     var boundValue: BoundType { get set }
 }
@@ -49,7 +49,7 @@ extension Bindable where Self: UIControl {
         }
     }
     
-    @discardableResult func bind(_ observable: Observable<BoundType>) -> NSObjectProtocol {
+    @discardableResult func bind(_ observable: Observable<BoundType>) -> Self {
         self.observable = observable
         let target = Target()
         self.target = target
@@ -57,14 +57,18 @@ extension Bindable where Self: UIControl {
             self.observable?.value = self.boundValue
         }
         addTarget(target, action: #selector(Target.valueChanged), for: [.editingChanged, .valueChanged])
-        let token = observable.bind { (value) in
+        _ = observable.bind { (value) in
             self.boundValue = value
         }
-        return token
+        return self
     }
     
-    func unbind(_ token: NSObjectProtocol?) {
+    func disposed(by disposeBag: DisposeBag) {
+        disposeBag.add(self)
+    }
+    
+    func dispose() {
         self.target = nil
-        self.observable?.unbind(token)
+        self.observable?.dispose()
     }
 }
