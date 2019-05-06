@@ -39,7 +39,7 @@ struct PlotScheme {
     
     var stepX: Int = 100000
     
-    var ordinates: [Ordinate] = [Ordinate(name: "Line 1", min: 0, max: 100, color: .red),
+    var ordinates: [Ordinate] = [Ordinate(name: "Line 1", min: 11, max: 100, color: .red),
                                  Ordinate(name: "Line 2", min: 22, max: 100, color: .green)]
     
     mutating func addOrdinate() -> Ordinate? {
@@ -72,3 +72,34 @@ struct PlotScheme {
     }
 }
 
+extension PlotScheme {
+    var isCountValid: Bool {
+        get {
+            return count > 0
+        }
+    }
+    
+    var isStepXValid: Bool {
+        get {
+            return stepX > 0
+        }
+    }
+    
+    var areOrdinatesValid: Bool {
+        get {
+            return ordinates.filter { !$0.isValid }.count == 0
+        }
+    }
+    
+    var isValid: Bool {
+        get {
+            return isCountValid && isStepXValid && areOrdinatesValid
+        }
+    }
+}
+
+extension PlotScheme.Ordinate {
+    var isValid: Bool {
+        return min < max
+    }
+}

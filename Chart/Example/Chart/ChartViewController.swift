@@ -30,7 +30,6 @@ class ChartViewController: UIViewController {
         
         tableView.backgroundView?.backgroundColor = .white
         tableView.backgroundColor = .white
-        tableView.isScrollEnabled = false
     }
 }
 

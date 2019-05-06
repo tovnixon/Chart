@@ -22,6 +22,11 @@ class CountTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     func bind(_ viewModel: GeneratorViewModel) {
         txtCount.bind(viewModel.count)
+        viewModel.isCountValid.bind { [unowned self] isValid in
+            self.txtCount.layer.borderColor = isValid ? nil : UIColor.red.cgColor
+            self.txtCount.layer.borderWidth = isValid ? 0 : 0.5
+        }
+        
     }
 }
 

@@ -29,5 +29,10 @@ class AbscissaTableViewCell: UITableViewCell {
     func bind(_ viewModel: GeneratorViewModel) {
         txtMin.bind(viewModel.minX)
         txtStep.bind(viewModel.stepX)
+        
+        viewModel.isStepXValid.bind { [unowned self] isValid in
+            self.txtStep.layer.borderColor = isValid ? nil : UIColor.red.cgColor
+            self.txtStep.layer.borderWidth = isValid ? 0 : 0.5
+        }
     }
 }

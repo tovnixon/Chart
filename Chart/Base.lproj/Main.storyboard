@@ -19,12 +19,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="XLm-1j-D6B" kind="relationship" relationship="rootViewController" id="eaz-vF-HFW"/>
+                        <segue destination="XLm-1j-D6B" kind="relationship" relationship="rootViewController" id="UjJ-rD-G3P"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A7g-qh-e73" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="153" y="-734"/>
+            <point key="canvasLocation" x="113" y="-734"/>
         </scene>
         <!--Generator View Controller-->
         <scene sceneID="Oe5-FJ-1Ru">
@@ -256,12 +256,14 @@
                             </barButtonItem>
                             <barButtonItem title="View chart" id="FNM-HT-4QT">
                                 <connections>
-                                    <segue destination="3LB-6P-iWi" kind="show" identifier="ViewChartSegue" id="IV9-UT-MmW"/>
+                                    <action selector="viewChart" destination="XLm-1j-D6B" id="xmV-KX-bnd"/>
+                                    <segue destination="3LB-6P-iWi" kind="show" id="WZf-Rz-HH0"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnView" destination="FNM-HT-4QT" id="1OX-fy-DWx"/>
                         <outlet property="tableView" destination="7uE-wL-CYf" id="Bgd-nG-qRm"/>
                     </connections>
                 </viewController>
@@ -367,7 +369,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4W-Jt-vE2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1705" y="-734"/>
+            <point key="canvasLocation" x="1660" y="-734"/>
         </scene>
     </scenes>
 </document>

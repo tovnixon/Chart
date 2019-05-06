@@ -49,7 +49,7 @@ extension Bindable where Self: UIControl {
         }
     }
     
-    func bind(_ observable: Observable<BoundType>) {
+    @discardableResult func bind(_ observable: Observable<BoundType>) -> NSObjectProtocol {
         self.observable = observable
         let target = Target()
         self.target = target
@@ -57,8 +57,14 @@ extension Bindable where Self: UIControl {
             self.observable?.value = self.boundValue
         }
         addTarget(target, action: #selector(Target.valueChanged), for: [.editingChanged, .valueChanged])
-        observable.bind { (value) in
+        let token = observable.bind { (value) in
             self.boundValue = value
         }
+        return token
+    }
+    
+    func unbind(_ token: NSObjectProtocol?) {
+        self.target = nil
+        self.observable?.unbind(token)
     }
 }

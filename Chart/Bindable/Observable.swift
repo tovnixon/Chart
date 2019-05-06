@@ -26,6 +26,10 @@ class Observable<T> {
         self.value = value
     }
     
+    deinit {
+        observers.removeAll()
+    }
+    
     @discardableResult func bind(_ observer: @escaping Observer) -> Token {
         defer {
             observer(value)
@@ -35,7 +39,10 @@ class Observable<T> {
         return object
     }
     
-    func unbind(_ token: Token) {
+    func unbind(_ token: Token?) {
+        guard let token = token else {
+            return
+        }
         observers.removeAll { $0.0.isEqual(token) }
     }
     

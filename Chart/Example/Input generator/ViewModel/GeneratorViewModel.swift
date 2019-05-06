@@ -19,11 +19,14 @@ class ObservableOrdinate {
     
     var color = Observable<UIColor?>(.red)
     
+    var isValid: Observable<Bool>
+    
     init(ordinate: PlotScheme.Ordinate) {
         self.name = Observable<String?>(ordinate.name)
         self.min = Observable<String?>("\(ordinate.min)")
         self.max = Observable<String?>("\(ordinate.max)")
         self.color = Observable<UIColor?>(ordinate.color)
+        self.isValid = Observable<Bool>(ordinate.isValid)
     }
 }
 
@@ -47,15 +50,34 @@ class GeneratorViewModel {
     
     public private(set) var ordinates = [Observable<ObservableOrdinate?>]()
     
+    public private(set) var isCountValid: Observable<Bool>
+    
+    public private(set) var isStepXValid: Observable<Bool>
+    
+    public private(set) var isValid: Observable<Bool>
+    
     init(model: PlotScheme) {
         self.scheme = model
+        
+        self.isCountValid = Observable<Bool>(model.isCountValid)
+        self.isStepXValid = Observable<Bool>(model.isStepXValid)
+        self.isValid = Observable<Bool>(model.isValid)
         
         count = Observable<String?>("\(model.count)")
         minX = Observable<String?>("\(model.minX)")
         stepX = Observable<String?>("\(model.stepX)")
         
+        isStepXValid.bind { [unowned self] _ in
+            self.isValid.value = self.scheme.isValid
+        }
+        
+        isCountValid.bind { [unowned self] _ in
+            self.isValid.value = self.scheme.isValid
+        }
+        
         count.bind { [unowned self] (value) in
             self.scheme.count = Int(value ?? "0") ?? 0
+            self.isCountValid.value = self.scheme.isCountValid
         }
         
         minX.bind { [unowned self] (value) in
@@ -64,30 +86,31 @@ class GeneratorViewModel {
         
         stepX.bind { [unowned self] (value) in
             self.scheme.stepX = Int(value ?? "0") ?? 0
+            self.isStepXValid.value = self.scheme.isStepXValid
         }
         
         var i = 0
         for ordinate in model.ordinates {
             let obsOrd = ObservableOrdinate(ordinate: ordinate)
-            bindOrdinateValue(obsOrd, index: i)
-            i += 1
             let obsObsOrd = Observable<ObservableOrdinate?>(obsOrd)
             ordinates.append(obsObsOrd)
+            bindOrdinateValue(obsOrd, index: i)
+            i += 1
         }
+    }
+    
+    deinit {
+        print("Deinit ViewModel")
     }
     
     private func bindOrdinateValue(_ observableOrdinate: ObservableOrdinate, index: Int) {
         observableOrdinate.max.bind { [unowned self] (value) in
-            let v = Int(value ?? "0") ?? 0
-            if v <= self.scheme.ordinates[index].min {
-                // throw validation error to vc?
-            } else {
-                self.scheme.ordinates[index].max = v
-            }
+            self.scheme.ordinates[index].max = Int(value ?? "0") ?? 0
+            self.ordinates[index].value?.isValid.value = self.scheme.ordinates[index].isValid
         }
         observableOrdinate.min.bind { [unowned self] (value) in
-            let v = Int(value ?? "0") ?? 0
-            self.scheme.ordinates[index].min = v
+            self.scheme.ordinates[index].min = Int(value ?? "0") ?? 0
+            self.ordinates[index].value?.isValid.value = self.scheme.ordinates[index].isValid
         }
         
         observableOrdinate.name.bind { [unowned self] (value) in
@@ -97,14 +120,18 @@ class GeneratorViewModel {
         observableOrdinate.color.bind { [unowned self] (value) in
             self.scheme.ordinates[index].color = value ?? .red
         }
+        
+        self.ordinates[index].value?.isValid.bind({ [unowned self] _ in
+            self.isValid.value = self.scheme.isValid
+        })
     }
     
     private func addObservableOrdinate(_ ordinate: PlotScheme.Ordinate) {
         let obsOrd = ObservableOrdinate(ordinate: ordinate)
-        let i = scheme.ordinates.count - 1
-        bindOrdinateValue(obsOrd, index: i)
         let obsObsOrd = Observable<ObservableOrdinate?>(obsOrd)
+        let i = scheme.ordinates.count - 1
         ordinates.append(obsObsOrd)
+        bindOrdinateValue(obsOrd, index: i)
     }
     
     // MARK: In  <<=

@@ -19,6 +19,8 @@ private enum Sections: Int {
 class GeneratorViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+
+    @IBOutlet weak var btnView: UIBarButtonItem!
     
     var viewModel: GeneratorViewModel! {
         didSet {
@@ -26,10 +28,16 @@ class GeneratorViewController: UIViewController {
         }
     }
     
+    deinit {
+        print("Deinit VC")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowsSelection = false
-        
+        viewModel.isValid.bind { [unowned self] isValid in
+            self.btnView.isEnabled = isValid
+        }
     }
     
     func bindViewModel() {

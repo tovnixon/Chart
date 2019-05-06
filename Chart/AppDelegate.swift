@@ -15,11 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "Generator") as! GeneratorViewController
         let scheme = PlotScheme()
         let viewModel = GeneratorViewModel(model: scheme)
         controller.viewModel = viewModel
+
         let nvc = UINavigationController(rootViewController: controller)
         let window = UIWindow(frame: UIScreen.main.bounds)
         

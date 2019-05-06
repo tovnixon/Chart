@@ -38,5 +38,13 @@ class OrdinateTableViewCell: UITableViewCell {
         txtMax.bind(ordinate.max)
         txtMin.bind(ordinate.min)
         txtTitle.bind(ordinate.name)
+        
+        ordinate.isValid.bind { [unowned self] isValid in
+            self.txtMin.layer.borderColor = isValid ? nil : UIColor.red.cgColor
+            self.txtMin.layer.borderWidth = isValid ? 0 : 0.5
+            self.txtMax.layer.borderColor = isValid ? nil : UIColor.red.cgColor
+            self.txtMax.layer.borderWidth = isValid ? 0 : 0.5
+        }
+
     }
 }
